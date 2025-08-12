@@ -31,6 +31,7 @@ Route::middleware([])->withoutMiddleware('is_doctor')->group(function () {
             Route::get('categories' , 'categories');
             Route::get('subcategories' , 'subcategories');
             Route::get('cities' , 'cities');
+            Route::get('days' , 'days');
         });
     }); 
     

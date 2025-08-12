@@ -3,6 +3,7 @@
 namespace App\Services\Base;
 
 use App\Models\Category;
+use App\Models\Day;
 use App\Models\SubCategory;
 use App\Models\System\Info\City;
 
@@ -29,6 +30,13 @@ class ListService
     {
         return getOrPaginate(
             City::query(),
+            $data
+        );
+    }
+    public function days($data)
+    {
+        return getOrPaginate(
+            Day::query(),
             $data
         );
     }

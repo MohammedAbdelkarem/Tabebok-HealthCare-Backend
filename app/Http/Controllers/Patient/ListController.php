@@ -46,4 +46,14 @@ class ListController extends Controller
             $request->has('per_page')
         );
     }
+
+    public function days(GetItemsRequest $request)
+    {
+        return success(
+            $this->listService->days($request->validated()),
+            ApiMessages::MSG_SUCCESS,
+            CityResource::class,
+            $request->has('per_page')
+        );
+    }
 }

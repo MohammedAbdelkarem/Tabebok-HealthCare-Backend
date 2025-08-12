@@ -11,7 +11,7 @@ enum MedicineTimeEnum: string
     case SLEEP_TIME         = 'sleep_time';
     case GET_UP_TIME        = 'get_up_time';
     case AS_NEEDED          = 'as_needed';        
-
+    
     public static function values(): array
     {
         return array_column(self::cases(), 'value');
