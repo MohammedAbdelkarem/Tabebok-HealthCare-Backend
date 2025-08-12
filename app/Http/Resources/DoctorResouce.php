@@ -45,7 +45,7 @@ class DoctorResouce extends JsonResource
         $data['user']   = $this->whenLoaded('user');
         $data['complaints'] = ComplaintResource::collection($this->whenLoaded('complaints'));
 
-        if(auth()->user()->isPatient())
+        if(auth()->check() && auth()->user()->isPatient())
         {
             $data['is_favorite'] = $this->favorites()->where('user_id' , auth()->id())->exists();
         }
