@@ -48,6 +48,11 @@ Route::middleware([])->group(function () {
     Route::controller(AuthController::class)->middleware('bots')->group(function () {
         Route::post("/login", "login")->name('login');
     });
+    Route::prefix('doctors')->controller(DoctorController::class)->group(function(){
+        Route::get('get' , 'getAll');
+        Route::get('profile/{id}' , 'profile')->name(RouteNames::DOCTORS_GET_PROFILE);
+        // Route::delete('rate/delete/{id}' , 'deleteRate');
+    });
 });
 
 //Auth Needed
@@ -210,11 +215,11 @@ Route::group(['middleware' => ['auth:api', "is_admin", 'token.access_api', 'user
     Route::prefix('transactions')->controller(TransactionController::class)->group(function(){
         Route::get('get' , 'getTransactions')->name(RouteNames::ADMIN_TRANSACTION_GET);
     });
-    Route::prefix('doctors')->controller(DoctorController::class)->group(function(){
-        Route::get('get' , 'getAll');
-        Route::get('profile/{id}' , 'profile')->name(RouteNames::DOCTORS_GET_PROFILE);
-        Route::delete('rate/delete/{id}' , 'deleteRate');
-    });
+    // Route::prefix('doctors')->controller(DoctorController::class)->group(function(){
+    //     Route::get('get' , 'getAll');
+    //     Route::get('profile/{id}' , 'profile')->name(RouteNames::DOCTORS_GET_PROFILE);
+    //     Route::delete('rate/delete/{id}' , 'deleteRate');
+    // });
     Route::prefix('patients')->controller(UserController::class)->group(function(){
         Route::get('get' , 'getPatients');
     });
