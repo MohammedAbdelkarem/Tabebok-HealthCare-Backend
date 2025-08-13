@@ -39,6 +39,10 @@ Route::middleware([])->withoutMiddleware('is_doctor')->group(function () {
         Route::get('get' , 'getPlans');
     });
 
+    Route::prefix('shifts')->controller(ShiftController::class)->group(function () {
+        Route::get('{doctor_id}' , 'landingIndex');
+    });
+
     Route::prefix('category')->group(function(){
         Route::controller(CategoryController::class)->group(function(){callback: 
             Route::get('show/{id}' , 'show');

@@ -25,6 +25,14 @@ class ShiftController extends Controller
             ApiMessages::MSG_SUCCESS,
         );
     }
+
+    public function landingIndex($doctor_id)
+    {
+        return success(
+            $this->shiftService->getDoctorShifts( $doctor_id),
+            ApiMessages::MSG_SUCCESS,
+        );
+    }
     public function show($id)
     {
         return success(
