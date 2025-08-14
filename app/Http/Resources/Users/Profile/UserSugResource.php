@@ -33,15 +33,16 @@ class UserSugResource extends JsonResource
 
             $logo = MediaResource::make($doctor->getFirstMedia(MediaCollection::DOCTOR_LOGO_COLLECTION));
 
+            // dd($logo);
             $logo = ($logo->resource == null) 
-                    ? DefaultMediaResource::make(1)
-                    : $logo;
+                    ? config('app.url') . '/' . config('_custom.user_default_image')
+                    : $logo->getUrl();
         }
         return [
             "id"            => $this->id,
             "name"          => $this->name,
             "avatar"        => ($this->role_id == 3)
-            ? $logo->getUrl()
+            ? $logo
             :$this->getProfileImage($this) ?? "",
             "phone_number"  => $phone_number,
             "role_id"       => $this->role_id,
