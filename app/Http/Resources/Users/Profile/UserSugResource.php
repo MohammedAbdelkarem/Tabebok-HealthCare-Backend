@@ -12,6 +12,7 @@ use App\Constants\MediaCollection;
 use App\Http\Resources\DoctorResouce;
 use App\Http\Resources\Media\MediaResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Media\DefaultMediaResource;
 
 class UserSugResource extends JsonResource
 {
@@ -30,7 +31,11 @@ class UserSugResource extends JsonResource
         {
             $doctor = $this->Doctor;
 
-            $logo = ($doctor->getFirstMedia(MediaCollection::DOCTOR_LOGO_COLLECTION)->getUrl());
+            $logo = MediaResource::make($doctor->getFirstMedia(MediaCollection::DOCTOR_LOGO_COLLECTION));
+
+            $logo = ($logo->resource == null) 
+                    ? DefaultMediaResource::make(1)
+                    : $logo;
         }
         return [
             "id"            => $this->id,
