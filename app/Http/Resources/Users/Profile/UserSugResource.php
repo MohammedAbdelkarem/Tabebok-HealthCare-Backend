@@ -41,7 +41,7 @@ class UserSugResource extends JsonResource
             "id"            => $this->id,
             "name"          => $this->name,
             "avatar"        => ($this->role_id == 3)
-            ? $logo
+            ? $logo->getUrl()
             :$this->getProfileImage($this) ?? "",
             "phone_number"  => $phone_number,
             "role_id"       => $this->role_id,
