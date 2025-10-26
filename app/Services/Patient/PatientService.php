@@ -589,5 +589,6 @@ class PatientService
         $patient->is_active = 0;
 
         $patient->save();
+        
     }
 }
