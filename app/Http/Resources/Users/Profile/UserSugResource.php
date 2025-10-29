@@ -27,6 +27,7 @@ class UserSugResource extends JsonResource
         }
         $patient_owner = Patient::where('user_id' , $this->id)->where('is_owner' , 1)->first();
 
+        
         if($this->role_id == 3)
         {
             $doctor = $this->Doctor;
