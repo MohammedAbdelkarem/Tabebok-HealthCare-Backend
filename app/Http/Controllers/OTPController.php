@@ -10,6 +10,7 @@ use Illuminate\Http\JsonResponse;
 
 class OTPController extends Controller
 {
+    
     public function __construct(
         protected OTPService $oTPService
     ) {}
