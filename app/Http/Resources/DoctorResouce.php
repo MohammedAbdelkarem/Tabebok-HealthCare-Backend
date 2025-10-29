@@ -25,6 +25,7 @@ class DoctorResouce extends JsonResource
     {
         $logo = MediaResource::make($this->getFirstMedia(MediaCollection::DOCTOR_LOGO_COLLECTION));
 
+        
         $data = [
             'id' => $this->id, 
             'clinic_name' => $this->clinic_name,
