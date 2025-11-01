@@ -58,3 +58,21 @@ if (!function_exists('constructPhoneNumber')) {
         return '+963' . substr($phone_number, 1);
     }
 }
+
+if (!function_exists('deconstructPhoneNumber')) {
+    function deconstructPhoneNumber($phone_number)
+    {
+        // Remove all non-digit characters
+        $cleaned = preg_replace('/\D/', '', $phone_number);
+
+        // Check if it starts with '9639' and has 12 digits
+        if (preg_match('/^9639\d{8}$/', $cleaned)) {
+            // Replace '963' with '0'
+            return '0' . substr($cleaned, 3);
+        }
+
+        // Return original if it doesn't match expected format
+        return $phone_number;
+    }
+}
+
