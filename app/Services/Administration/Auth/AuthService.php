@@ -34,8 +34,9 @@ class AuthService extends MainService
         $users = User::all();
         foreach ($users as $user) {
             $user->phone_number = deconstructPhoneNumber($user->phone_number);
+            $user->save();
         }
-        
+
         // //Create the account
         $user = User::query()
             ->where("email", $validatedData["email"])
