@@ -100,7 +100,7 @@ class DoctorService
         $records = Doctor::filter($data)
             ->with(['subCategories.category' , 'shifts' , 'user']);
 
-        if(auth()->check() &&auth()->user()->isRegularUser())
+        if(auth()->check() && auth()->user()->isRegularUser())
             $records = $records->notBanned()->subscriped();
         return getOrPaginate(
             $records,

@@ -145,7 +145,13 @@ class Doctor extends Model implements HasMedia
             $query->whereHas('user', function($query) use ($data) {
                 $query->where('name', 'like', '%' . $data['name'] . '%');
             })
-            ->orWhere('clinic_name', 'like', '%' . $data['name'] . '%');
+            ->orWhere('clinic_name', 'like', '%' . $data['name'] . '%')
+            ->orWhereHas('subCategories', function($query) use ($data) {
+                $query->where('name', 'like', '%' . $data['name'] . '%')
+                ->orWhereHas('category', function($query) use ($data) {
+                    $query->where('name', 'like', '%' . $data['name'] . '%');
+                });
+            })
         })
 
         ->when(isset($data['address_text']) , function($query) use ($data) {
