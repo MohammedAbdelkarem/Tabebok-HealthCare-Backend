@@ -9,6 +9,8 @@ if(!function_exists('WhatsappSendOTP'))
 {
     function WhatsAppSendOTP($phone_number, $otp)
     {
+        $phone_number = constructPhoneNumber($phone_number);
+
         $client = new Client();
 
         $url = 'https://msgpilot.net/whatsapp/api/v1/message/text/send';
@@ -47,5 +49,12 @@ if(!function_exists('WhatsappSendOTP'))
                 'response' => $e->hasResponse() ? $e->getResponse()->getBody()->getContents() : null,
             ]);
         }
+    }
+}
+if (!function_exists('constructPhoneNumber')) {
+    function constructPhoneNumber($phone_number)
+    {
+        // Replace leading '0' with '+963'
+        return '+963' . substr($phone_number, 1);
     }
 }
