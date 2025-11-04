@@ -181,4 +181,13 @@ class ReservationController extends Controller
             ReservationResource::class
         );
     }
+
+    public function doctorFilter(Request $request)
+    {
+        return success(
+            $this->reservationService->filterForDoctor(doctor_id() , $request->all()),
+            ApiMessages::MSG_SUCCESS,
+            ReservationResource::class
+        );
+    }
 }

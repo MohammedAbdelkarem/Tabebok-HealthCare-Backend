@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth:api', "is_user", 'token.access_api', 'user.
             Route::get('dates/{id}' , 'getDatesForDay');
             Route::post('done/{id}' , 'done');
             Route::get('get' , 'getReservations')->name(RouteNames::DOCTOR_RESERVATIONS);
+            Route::get('filter' , 'doctorFilter')->name(RouteNames::DOCTOR_RESERVATIONS);
             Route::get('details/{id}' , 'getReservationDetails')->name(RouteNames::RESERVATION_DETAILS_FOR_DOCTOR);
             Route::post('update/{visit_id}' , 'updateReport');
             //rate

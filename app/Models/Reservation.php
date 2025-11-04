@@ -99,4 +99,16 @@ class Reservation extends Model implements HasMedia
             $query->where('time_to_come' , '<=', $data['end_time']);
         });
     }
+
+    public function scopeDoctorFilter($query , $data , $doctor_id)
+    {
+        return $query
+            ->where('doctor_id' , $doctor_id)
+            ->when(isset($data['search']) , function($query) use ($data) {
+                $query->where('text' , 'like' , '%' . $data['search'] . '%')
+                ->orWhereHas('patient' , function($query) use ($data) {
+                    $query->where('full_name' , 'like' , '%' . $data['search'] . '%');
+                });
+            });
+    }
 }

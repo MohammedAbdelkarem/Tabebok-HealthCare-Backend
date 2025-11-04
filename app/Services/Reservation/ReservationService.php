@@ -751,6 +751,14 @@ class ReservationService
             ->first();
     }
 
+    public function filterForDoctor($doctor_id , $data)
+    {
+        return getOrPaginate(
+            Reservation::doctorFilter($data , $doctor_id),
+            $data
+        );
+    }
+
     private function checkStatusFlow($old_status , $new_status)
     {
         if(
