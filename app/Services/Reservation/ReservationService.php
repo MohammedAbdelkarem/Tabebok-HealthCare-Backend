@@ -754,7 +754,10 @@ class ReservationService
     public function filterForDoctor($doctor_id , $data)
     {
         return getOrPaginate(
-            Reservation::doctorFilter($data , $doctor_id),
+            Reservation::doctorFilter($data , $doctor_id)->with(
+                'patient',
+                'visit'
+            ),
             $data
         );
     }
