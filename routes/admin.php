@@ -31,8 +31,7 @@ use App\Http\Controllers\System\Notification\NotificationController;
 use App\Http\Controllers\Administration\Profile\UserProfileController;
 use App\Http\Controllers\Administration\Profile\AdminProfileController;
 use App\Http\Controllers\System\CustomerServiceCard\CustomerServiceCardController;
-
-
+use App\Http\Controllers\Users\Auth\AuthController as UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +46,8 @@ use App\Http\Controllers\System\CustomerServiceCard\CustomerServiceCardControlle
 Route::middleware([])->group(function () {
     Route::controller(AuthController::class)->middleware('bots')->group(function () {
         Route::post("/login", "login")->name('login');
+    });
+    Route::controller(UserAuthController::class)->group(function () {
         Route::post("/register/doctor", "registerDoctor")->middleware('bots')->name('registerDoctor');
     });
     Route::prefix('doctors')->controller(DoctorController::class)->group(function(){
