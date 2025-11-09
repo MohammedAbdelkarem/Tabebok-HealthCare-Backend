@@ -47,6 +47,7 @@ use App\Http\Controllers\System\CustomerServiceCard\CustomerServiceCardControlle
 Route::middleware([])->group(function () {
     Route::controller(AuthController::class)->middleware('bots')->group(function () {
         Route::post("/login", "login")->name('login');
+        Route::post("/register/doctor", "registerDoctor")->middleware('bots')->name('registerDoctor');
     });
     Route::prefix('doctors')->controller(DoctorController::class)->group(function(){
         Route::get('get' , 'getAll');
