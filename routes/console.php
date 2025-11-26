@@ -14,16 +14,16 @@ Schedule::command('app:ban-remove')
     ->everyMinute()
     ->runInBackground()
     ->withoutOverlapping();
-Schedule::command('app:delete-unverified')
-    ->everySixHours()
-    ->runInBackground()
-    ->withoutOverlapping();
+// Schedule::command('app:delete-unverified')
+//     ->everySixHours()
+//     ->runInBackground()
+//     ->withoutOverlapping();
 
 //Others
-Schedule::command('app:delete-unverified')
-    ->everySixHours()
-    ->runInBackground()
-    ->withoutOverlapping();
+// Schedule::command('app:delete-unverified')
+//     ->everySixHours()
+//     ->runInBackground()
+//     ->withoutOverlapping();
 
 Schedule::command('banner:remove')
     ->everyTwoMinutes()
