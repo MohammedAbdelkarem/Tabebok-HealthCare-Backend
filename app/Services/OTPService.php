@@ -54,7 +54,7 @@ class OTPService extends MainService
         WhatsAppSendOTP($phone_number, $otp->otp);
         
         //TODO dispatch Queue
-        // SendSMSOTPJob::dispatch($phone_number, $otp);
+        SendSMSOTPJob::dispatch($phone_number, $otp);
 
         return $otp;
     }
