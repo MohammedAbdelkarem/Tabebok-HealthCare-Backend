@@ -81,7 +81,8 @@ class AuthService extends MainService
         $token = $this->generateLoginToken($user);
 
         $data = [
-            "otp"    => config("app.env") == "local" ? (string) $otp->otp : "", //TODO Check for remove
+            "otp"    => (string) $otp->otp, //TODO Check for remove
+            // "otp"    => config("app.env") == "local" ? (string) $otp->otp : "", //TODO Check for remove
             "tokens" => $token,
             "user"   => [
                 "id" => $user->id,
@@ -123,7 +124,8 @@ class AuthService extends MainService
         $token = $this->generateLoginToken($user);
 
         $data = [
-            "otp"    => config("app.env") == "local" ? (string) $otp->otp : "", //TODO Check for remove
+             "otp"    => (string) $otp->otp, //TODO Check for remove
+            // "otp"    => config("app.env") == "local" ? (string) $otp->otp : "", //TODO Check for remove
             "tokens" => $token,
             "user"   => [
                 "id" => $user->id,
@@ -146,7 +148,8 @@ class AuthService extends MainService
         $token = $this->generateLoginToken($user);
 
         $data = [
-            "otp"    => config("app.env") == "local" ? (string) $otp->otp : "", //TODO Check for remove
+             "otp"    => (string) $otp->otp, //TODO Check for remove
+            // "otp"    => config("app.env") == "local" ? (string) $otp->otp : "", //TODO Check for remove
             "tokens" => $token,
             "user"   => [
                 "id" => $user->id,
