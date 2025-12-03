@@ -40,7 +40,7 @@ class UserListResource extends JsonResource
             $data += [
                 "in_trash"      => (bool) $this->deleted_at,
                 "is_active"     => (bool) !$this->deactive_at,
-                "is_banned"     => (bool) ($this->profile->banned_until && Carbon::parse($this->profile->banned_until)->gt(Carbon::now())),
+                "is_banned"     => (bool) (!$this->profile || ($this->profile->banned_until && Carbon::parse($this->profile->banned_until)->gt(Carbon::now()))),
             ];
         }
 
